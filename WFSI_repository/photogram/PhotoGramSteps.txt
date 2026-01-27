@@ -1,0 +1,87 @@
+
+Photogrammetry Notes
+====================
+
+Brian Drye
+
+March 3, 2023
+
+Internal Network Resources
+--------------------------
+
+Spreadsheet for progress tracking:
+https://docs.google.com/spreadsheets/d/1eE6iOJvCkgVJhUV8st0c4IxscXkBRjnl9ZssOhlADHo/edit#gid=737091425
+
+
+3D Fuels Shared Drive (Google):
+https://drive.google.com/drive/folders/0AACBIQ69sgr9Uk9PVA
+This is where the source video files are located. 
+One video file for each clipplot (979 videos total)
+
+Box:
+External 3D Fuels / data / <sitename> / 
+
+
+
+Setup & options for running:
+
+If you want to run the scripts on your own computer: 
+
+install Pycharm Community Edition (free)
+create a new Project (example: "PhotoGram1")
+choose add virtual env (Python 3.9)
+copy python scripts to the project directory
+add package opencv-python via "Python Packages" button in the status bar
+
+
+Overview of steps
+
+Step 0: review clipplot photos for each site to see what colors are used in the half meter 
+PVC frames. Use colorPickerHSV.py to create color mask ranges. (already done)
+
+Step 1: run 01getFramesFromVideo.py against one or more videos. 
+This will select ~400 video frames and save them as .png files
+
+Step 2: review the .png files and delete any images that don't look good (blurry, unwanted shadows, etc.) 
+
+Step 3a: run createModelWithoutMarkersAgisoft1.py This will create models. 
+
+Step 3b: review models. If models don't look like reality, add markers to images in Agisoft.
+
+Step 3c: run createModelAfterMarkersAgisoft2.py This will recreate models. 
+
+Step 4: use CloudCompare to segment out the clipplots. Use centeredsquare.shp to get a perfect square. 
+Move/Rotate the square, then seqment. 
+
+Step 5: run sfmNormalize_RGB.R to rotate/normalize clipplots
+
+Step 6: run sfmShiftXYvalues.R to position SFM clipplots in same coordinate space as TLS clipplots
+
+Step 7: copy files from local machine to network drive. 
+
+
+Detailed Explanation of Step 1a & 1b: 
+
+refer to the tracking spreadsheet link
+pick a site (say TatesHellA = Lauren, TatesHellB = Kate)
+download a .mp4 video (to "inputVideos" folder at same level as script location) 
+Tates Hell A location: (3D Fuels Shared Drive / SE_Tate's_Hell / Tate's_Hell_Photogrammetry / Tate's_Hell_A)
+https://drive.google.com/drive/folders/1eKqv2f1HFjFJXW_EdBDp8AfH_LsM1hQm
+view the video to see what colors are in the frame and NW corner Pole
+adjust the masking to either look for the frame colors or the pole color. 
+Example 1: if the frame is red and white and the pole is grey, then set the mask to look for red and white. 
+Example 2: if the pole is covered with a blue pool noodle, set the mask to just look for blue
+Example 3: if the frame is black, yellow, red, white, set the mask to use all those colors
+Run 01getFramesFromVideo.py
+It will look at any videos in "inputVideos" and put output .png files in "inputPhotos/<plotname>/*.png"
+It will also display the video frames (source image and mask) so you can see if the mask is ok. 
+Review .png files
+Delete any that are not showing the target clipplot. (ideal is all four sides of half meter square and vertical pole visible)
+Upload the reviewed .png file folder to "temp_images" in Box 
+External 3D Fuels > data > sitename > video > temp_images
+
+
+
+
+
+

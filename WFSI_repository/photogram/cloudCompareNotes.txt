@@ -1,0 +1,93 @@
+CloudCompare Step 04 details
+
+
+Example Sycan Marsh ClipPlot 11: 
+
+
+=============
+initial steps
+=============
+
+Open CloudCompare
+
+load individual clip plot .laz files (that were created by Step 03 (these may have take1 or take2, you can pick either)
+choose "No" when prompted to shift the points
+
+Make a note of the Z value: (say it is -10)
+
+C:\03AgisoftModels\SMF11CTR.laz
+C:\03AgisoftModels\SMF11NE.laz
+C:\03AgisoftModels\SMF11NW.laz
+C:\03AgisoftModels\SMF11SE.laz
+C:\03AgisoftModels\SMF11SW.laz
+
+load the shapefiles (squares used to clip the TLS) (in explorer, sort by type, and select all the files at once)
+C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\spatial\11_CTR.shp
+C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\spatial\11_NE.shp
+C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\spatial\11_NW.shp
+C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\spatial\11_SE.shp
+C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\spatial\11_SW.shp
+
+use the Z value to position (set Z transform to zero, we want the shapefiles to be at zero)
+choose Yes to apply the "suggested" transform for X and Y. (set Z = 0)
+
+click the side view
+(should have shapefiles at zero, clipplots at -10)
+
+reposition the clipplots using the rotation/translation button if needed. (you can select all the plots to move in bulk)
+
+====================================
+repeat these steps for each clipplot
+====================================
+
+in the DB Tree, show only the CTR clipplot (hide the other clipplots)
+
+click the "rotation/translation" button next to the scissors
+left click will rotate (you can pick the rotation axis (first X, then Y in side view, Z in top view) to rotate one at a time... )
+right click and drag will move (keep an eye on the cursor to see if it is rotation or move)
+zoom in/out via mouse wheel (or two finger swipe on track pad)
+click the checkmark to accept the position change
+
+position the clipplot so it matches the Center square. Note: we want to move the plot, not the squares. 
+
+Choose Edit->Multiply/Scale (enter .9 to shrink by 10%, etc), check "keep in position" checkbox
+
+after adjusting scale you might have to redo the rotation/translation step 
+
+Once the clipplot is in position, select the clipplot in the DB Tree. 
+
+click the Segment (scissors) button
+click the polygon button, choose use existing polyline
+pick the shapefile (they are in this order: CTR, NE, NW, SE, SW) for the CTR
+(a green box will appear)
+if ok, click "segment in" button
+then click checkmark. 
+Click "save" button to save the interior clipplot segment 
+Save to: C:\Users\bdrye\Box\External 3D Fuels\Outputs\sycan_forest\video\cloudCompare\SMF11CTR.txt
+
+deselect the CTR segements in the DB Tree
+
+Repeat for NE, NW, SE, SW. 
+
+
+=============
+special cases
+=============
+
+If a shapefile is missing, you can manually clip the square: 
+click the Segement (scissors) button
+single left clicks to draw a polygon, (right click to "close" the polygon)
+click the "segment in", then the checkmark, then save. 
+
+You can load the raw TLS .laz file (Box\External 3D Fuels\Outputs\<site>\tls\plot\raw) if you want.
+It will line up with the shapefiles when viewed top down. 
+This is a good sanity check if the shapefiles don't seem to match up with the clipplots. 
+
+
+
+
+
+
+
+
+
