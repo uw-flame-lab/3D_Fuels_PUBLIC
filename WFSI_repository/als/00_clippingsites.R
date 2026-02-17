@@ -1,4 +1,4 @@
-# Title: clippingsites.R
+# Title: 00_clippingsites.R
 #
 # Objective: 
 # use shapefiles of 3D Fuels sites to clip out needed lidar point clouds from als acquisitions
